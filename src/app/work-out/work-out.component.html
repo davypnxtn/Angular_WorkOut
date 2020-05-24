@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-1">
+            <div class="navbar-brand">
+                <h1>{{workoutTitel}}</h1>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navLinks">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link h2" href="#" (click)="instructies()">Instructies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link h2" href="#" (click)="startWorkout()">Start</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+</div>
+
+<div *ngIf="gestart; else uitleg">
+    <div class="row">
+        <div class="col-6">
+            <div class="text-center">
+                <div class="h5 mt-1">Instructies</div><br>
+                <div class="h5">{{titelOefening}}</div>
+                <p class="h5">{{beschrijvingOefening}}</p>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="text-center">
+                <div class="h5 mt-1">Resterende tijd</div>
+                <div class="display-1 mt-5">{{duurOefening}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #uitleg>
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center mt-2 mb-4">
+                Hieronder kan je de instructies voor elke oefening lezen<br>
+                Ben je er klaar voor? Druk op start
+            </h4>
+            <div *ngFor="let oefening of oefeningen; index as i">
+                <h5>
+                    <p>{{i +1}}. {{oefening.titel}}</p>
+                    <p>{{oefening.beschrijving}}</p>
+                </h5>
+            </div>
+        </div>
+    </div>
+    
+</ng-template>
